@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  aist3410-mariadb:
+    # network_mode: service:db
+    network_mode: host
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/workspaces:cached      
+    command: sleep infinity
+
+
+  db:
+    network_mode: host
+    image: mariadb:latest
+    restart: unless-stopped
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: ""
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
+
+
+volumes:
+  mariadb-data:
+ 

@@ -1,0 +1,20 @@
+table Footballteam{
+    home_team_name string [pk]
+    away_team_name string [pk]
+    cities string
+}
+
+table Match {
+    startime datetime [pk]
+    startdate datetime 
+    location string
+    home_team_name string 
+    away_team_name string
+}
+table Season {
+    startdate datetime [pk]
+    enddate datetime
+}
+ref: Footballteam.home_team_name - Match.home_team_name
+ref: Footballteam.away_team_name - Match.away_team_name
+ref: Season.startdate < Match.startdate

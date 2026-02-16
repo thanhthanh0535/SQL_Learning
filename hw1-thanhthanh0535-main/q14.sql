@@ -1,0 +1,13 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display a list of all products (name, product line, vendor, and MSRP) that
+-- are models from the 21st century. This is tricky. You can’t just use "> 2000"
+-- on the product name because it’s a string. BUT, you CAN find all names that
+-- START with "20". Sort by name ascending.
+-- 
+-- Note: be careful not to accidentally include the Jaguar XK 120, Diamond T620,
+-- etc.
+-- 
+-- (5 results, a 2001 Ferrari is first)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

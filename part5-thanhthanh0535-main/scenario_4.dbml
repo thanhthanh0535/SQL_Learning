@@ -1,0 +1,20 @@
+table members {
+    member_name string [pk]
+    position string
+}
+
+table tasks {
+    name_of_tasks string [pk]
+    position string
+    member_name string
+    startdate datetime
+    completed bool
+}
+
+table schedule {
+    startdate datetime [pk]
+    enddate datetime
+    name_of_tasks string
+}
+ref: members.member_name <> tasks.member_name
+ref: tasks.name_of_tasks > schedule.name_of_tasks

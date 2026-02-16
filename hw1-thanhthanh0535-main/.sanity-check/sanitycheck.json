@@ -1,0 +1,175 @@
+{
+  "databases": {
+    "classicmodels": "classicmodels.sql"
+  },
+  "queries": {
+    "q1": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 7,
+      "colCount": 3
+    },
+    "q2": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 3,
+      "colCount": 4
+    },
+    "q3": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 4,
+      "colCount": 5
+    },
+    "q4": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 3,
+      "colCount": 4
+    },
+    "q5": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 23,
+      "colCount": 2
+    },
+    "q6": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 1,
+      "colCount": 1
+    },
+    "q7": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 16,
+      "colCount": 3
+    },
+    "q8": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 110,
+      "colCount": 4
+    },
+    "q9": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 23,
+      "colCount": 4
+    },
+    "q10": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 12,
+      "colCount": 4
+    },
+    "q11": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 13,
+      "colCount": 1
+    },
+    "q11#challenge": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 1,
+      "colCount": 1
+    },
+    "q12": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 5,
+      "colCount": 1
+    },
+    "q13": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 7,
+      "colCount": 4
+    },
+    "q14": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 5,
+      "colCount": 4
+    },
+    "q15": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 20,
+      "colCount": 4
+    },
+    "q16": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 23,
+      "colCount": 4
+    },
+    "q17": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 1,
+      "colCount": 2
+    },
+    "q18": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 14,
+      "colCount": 3
+    },
+    "q19": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 95,
+      "colCount": 2
+    },
+    "q20": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 1,
+      "colCount": 1
+    },
+    "q20#challenge": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 9,
+      "colCount": 3
+    },
+    "q21": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 1,
+      "colCount": 3
+    },
+    "q22": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 1,
+      "colCount": 1
+    },
+    "q23": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 2,
+      "colCount": 4
+    },
+    "q24": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 21,
+      "colCount": 6
+    },
+    "q25": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 23,
+      "colCount": 4
+    },
+    "q25#challenge": {
+      "verb": "select",
+      "dbname": "classicmodels",
+      "rowCount": 23,
+      "colCount": 4
+    }
+  }
+}

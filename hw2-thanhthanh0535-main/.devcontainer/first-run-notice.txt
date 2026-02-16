@@ -1,0 +1,13 @@
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃👋 Welcome to the AIST 3410 Codespace! You are running on your very own      ┃
+┃   copy of Ubuntu Linux kindly supplied by the folks at Microsoft's GitHub.  ┃
+┃ $ This is your Linux Terminal window, aka Console or Command Prompt. You    ┃
+┃   can press [ Ctrl + ~ ] or [ Cmd + ~ ] to hide or show this window.        ┃
+┃📝 Above are your open editor tabs. Edit and save code in these.             ┃
+┃📂 By default, to the left is your file explorer panel. You can browse files ┃
+┃   your current project workspace. Create, open, and manage files from here. ┃
+┃⬱ The buttons far left control which panel is displayed. You'll be most      ┃
+┃   interested in the explorer, source control, and Database panels.          ┃
+┃    🔎 Exlore. 🤔 Discover. 🌱 Grow. 🤪 Nope. 🤓 Yep! 😭 Definitely not!     ┃
+┃    😎 You got this! 🍀 Good luck!! Oh and 🖖 live long and prosper! 😉      ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

@@ -1,0 +1,484 @@
+[
+  {
+    "query_name": "q1",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "number of columns",
+        "col": 6
+      },
+      {
+        "issue": "first row",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "last row",
+        "val": "jobTitle"
+      }
+    ],
+    "sql": "SELECT emps.lastName, emps.firstName, emps.email, emps.extension, offs.city, offs.phone\nFROM employees as emps\nJOIN offices as offs\nON offs.officeCode = emps.officeCode\nORDER BY lastName, firstName"
+  },
+  {
+    "query_name": "q2",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "first row",
+        "val": "Employee"
+      },
+      {
+        "issue": "first row",
+        "val": "Manager"
+      },
+      {
+        "issue": "last row",
+        "val": "Employee"
+      },
+      {
+        "issue": "last row",
+        "val": "Manager"
+      }
+    ],
+    "sql": "SELECT concat(emps.lastName, \" \",emps.firstName) AS Employee,emps.jobTitle as Employee_Job_Title, concat(emps1.lastName, \" \",emps1.firstName) AS Manager, emps1.jobTitle as Manager_Job_Title\nFROM employees as emps\nJOIN employees as emps1\nON emps.reportsTo = emps1.employeeNumber\nORDER BY emps.lastName, emps.firstName"
+  },
+  {
+    "query_name": "q3",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "first row",
+        "val": "Employee"
+      },
+      {
+        "issue": "first row",
+        "val": "Manager"
+      },
+      {
+        "issue": "last row",
+        "val": "Employee"
+      },
+      {
+        "issue": "last row",
+        "val": "Manager"
+      }
+    ],
+    "sql": "SELECT concat(emps.lastName, \" \",emps.firstName) AS Employee,emps.jobTitle as Employee_Job_Title, concat(emps1.lastName, \" \",emps1.firstName) AS Manager, emps1.jobTitle as Manager_Job_Title\nFROM employees as emps\nLEFT JOIN employees as emps1\nON emps.reportsTo = emps1.employeeNumber\nORDER BY emps.lastName, emps.firstName"
+  },
+  {
+    "query_name": "q4",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "colNames",
+        "val": "COALESCE(mgr.jobTitle, 'NOT NULL')"
+      },
+      {
+        "issue": "first row",
+        "val": "Employee"
+      },
+      {
+        "issue": "first row",
+        "val": "Manager"
+      },
+      {
+        "issue": "last row",
+        "val": "Employee"
+      },
+      {
+        "issue": "last row",
+        "val": "Manager"
+      }
+    ],
+    "sql": "SELECT IFNULL(concat(emps.lastName, \" \",emps.firstName),\"Athena\") AS Employee,emps.jobTitle as Employee_Job_Title, IFNULL(concat(emps1.lastName, \" \",emps1.firstName),\"Zeus\") AS Manager, IFNULL(emps1.jobTitle,\"Geek\") as Manager_Job_Title\nFROM employees as emps\nLEFT JOIN employees as emps1\nON emps.reportsTo = emps1.employeeNumber\nORDER BY emps.lastName, emps.firstName"
+  },
+  {
+    "query_name": "q5",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "Last"
+      },
+      {
+        "issue": "colNames",
+        "val": "First"
+      },
+      {
+        "issue": "colNames",
+        "val": "Title"
+      },
+      {
+        "issue": "colNames",
+        "val": "Ext"
+      },
+      {
+        "issue": "colNames",
+        "val": "Office"
+      },
+      {
+        "issue": "first row",
+        "val": "Office"
+      },
+      {
+        "issue": "first row",
+        "val": "Manager"
+      },
+      {
+        "issue": "last row",
+        "val": "Office"
+      },
+      {
+        "issue": "last row",
+        "val": "Manager"
+      }
+    ],
+    "sql": "SELECT emps.lastName,emps.firstName, emps.jobTitle, emps.officeCode, o.phone, emps.extension,emps.email, concat(emps1.lastName, \" \",emps1.firstName) AS Manager\nFROM employees as emps\nLEFT JOIN employees as emps1\nON emps.reportsTo = emps1.employeeNumber\nJOIN offices as o\nON o.officeCode = emps.officeCode\nORDER BY emps.lastName, emps.firstName"
+  },
+  {
+    "query_name": "q6",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "number of rows",
+        "col": 7
+      },
+      {
+        "issue": "first row",
+        "val": "Manager"
+      },
+      {
+        "issue": "first row",
+        "val": "jobTitle"
+      },
+      {
+        "issue": "first row",
+        "val": "DirectReports"
+      }
+    ],
+    "sql": "SELECT concat(emps1.lastName, \" \",emps1.firstName) AS Manager, emps1.jobTitle as DirectReports,COUNT(*)\nFROM employees as emps\nLEFT JOIN employees as emps1\nON emps.reportsTo = emps1.employeeNumber\nGROUP BY Manager\nORDER BY count(*) ASC"
+  },
+  {
+    "query_name": "q7",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "ContactName"
+      },
+      {
+        "issue": "last row",
+        "val": "ContactName"
+      }
+    ],
+    "sql": "SELECT cus.customerName, concat(cus.contactLastName, \" \", cus.contactFirstName) as ContactName, cus.phone, SUM(amount) AS TotalPayments\nFROM customers as cus\nJOIN payments as pay\nON cus.customerNumber = pay.customerNumber\nGROUP BY ContactName\nORDER BY TotalPayments DESC"
+  },
+  {
+    "query_name": "q8",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "ContactName"
+      }
+    ],
+    "sql": "SELECT cus.customerName, concat(cus.contactLastName, \" \", cus.contactFirstName) as ContactName, cus.phone, SUM(amount) AS TotalPayments\nFROM customers as cus\nLEFT JOIN payments as pay\nON cus.customerNumber = pay.customerNumber\nGROUP BY ContactName\nORDER BY TotalPayments DESC"
+  },
+  {
+    "query_name": "q9",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "ContactName"
+      },
+      {
+        "issue": "first row",
+        "val": "phone"
+      },
+      {
+        "issue": "first row",
+        "val": "TotalPayments"
+      }
+    ],
+    "sql": "SELECT cus.customerName, concat(cus.contactLastName, \" \", cus.contactFirstName) as ContactName, cus.phone, IFNULL(SUM(amount),\"0\") AS TotalPayments\nFROM customers as cus\nLEFT JOIN payments as pay\nON cus.customerNumber = pay.customerNumber\nGROUP BY ContactName\nORDER BY TotalPayments DESC"
+  },
+  {
+    "query_name": "q10",
+    "issues": [
+      {
+        "issue": "number of columns",
+        "col": 4
+      },
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "ContactName"
+      },
+      {
+        "issue": "first row",
+        "val": "phone"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "ContactName"
+      },
+      {
+        "issue": "last row",
+        "val": "phone"
+      }
+    ],
+    "sql": "SELECT cus.customerName, concat(cus.contactLastName, \" \", cus.contactFirstName) as ContactName, cus.phone, IFNULL(SUM(amount),\"0\") AS TotalPayments\nFROM customers as cus\nLEFT JOIN payments as pay\nON cus.customerNumber = pay.customerNumber\nGROUP BY ContactName\nHAVING Totalpayments = 0\nORDER BY TotalPayments ASC"
+  },
+  {
+    "query_name": "q11",
+    "issues": [
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      },
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "OrdersPlaced"
+      },
+      {
+        "issue": "last row",
+        "val": "OrdersPlaced"
+      }
+    ],
+    "sql": "SELECT cus.customerName, count(orde.orderNumber)  as OrdersPlaced\nFROM customers as cus\nJOIN orders as ord\nON ord.customerNumber = cus.customerNumber\nJOIN orderdetails as orde\nON orde.orderNumber = ord.orderNumber\nGROUP BY cus.customerName\nORDER BY OrdersPlaced ASC, cus.customerName ASC"
+  },
+  {
+    "query_name": "q12",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "OrdersPlaced"
+      },
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      },
+      {
+        "issue": "first row",
+        "val": "OrdersPlaced"
+      },
+      {
+        "issue": "last row",
+        "val": "OrdersPlaced"
+      }
+    ],
+    "sql": "SELECT cus.customerName, count(orde.orderNumber) as OrderPlaced\nFROM customers as cus\nLEFT JOIN orders as ord\nON ord.customerNumber = cus.customerNumber\nLEFT JOIN orderdetails as orde\nON orde.orderNumber = ord.orderNumber\nGROUP BY cus.customerName\nORDER BY OrderPlaced ASC,cus.customerName ASC"
+  },
+  {
+    "query_name": "q13",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "OrdersPlaced"
+      },
+      {
+        "issue": "last row",
+        "val": "OrdersPlaced"
+      }
+    ],
+    "sql": "SELECT cus.customerName, count(orde.orderNumber) as OrderPlaced\nFROM customers as cus\nLEFT JOIN orders as ord\nON ord.customerNumber = cus.customerNumber\nLEFT JOIN orderdetails as orde\nON orde.orderNumber = ord.orderNumber\nGROUP BY cus.customerName\nORDER BY OrderPlaced ASC,cus.customerName ASC"
+  },
+  {
+    "query_name": "q14",
+    "issues": [
+      {
+        "issue": "number of rows",
+        "col": 122
+      },
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "Contact"
+      },
+      {
+        "issue": "first row",
+        "val": "city"
+      },
+      {
+        "issue": "first row",
+        "val": "phone"
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRep"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "Contact"
+      },
+      {
+        "issue": "last row",
+        "val": "city"
+      },
+      {
+        "issue": "last row",
+        "val": "state"
+      },
+      {
+        "issue": "last row",
+        "val": "country"
+      },
+      {
+        "issue": "last row",
+        "val": "phone"
+      },
+      {
+        "issue": "last row",
+        "val": "SalesRep"
+      }
+    ],
+    "sql": "SELECT DISTINCT cus.customerName, CONCAT(cus.contactFirstName, \" \",cus.contactLastName) as Contact, cus.city, cus.state, cus.country, cus.phone, CONCAT(emp.firstName, \" \", emp.lastName) as SalesRep\nFROM customers as cus\nLEFT JOIN offices as offs\nON offs.postalCode = offs.postalCode\nRIGHT JOIN employees as emp\nON emp.officeCode = offs.officeCode\nGROUP BY cus.customerName\nORDER BY SalesRep ASC, Contact ASC"
+  },
+  {
+    "query_name": "q15",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "Contact"
+      },
+      {
+        "issue": "first row",
+        "val": "city"
+      },
+      {
+        "issue": "first row",
+        "val": "country"
+      },
+      {
+        "issue": "first row",
+        "val": "phone"
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRep"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "Contact"
+      },
+      {
+        "issue": "last row",
+        "val": "city"
+      },
+      {
+        "issue": "last row",
+        "val": "state"
+      },
+      {
+        "issue": "last row",
+        "val": "phone"
+      },
+      {
+        "issue": "last row",
+        "val": "SalesRep"
+      }
+    ],
+    "sql": "SELECT DISTINCT cus.customerName, CONCAT(cus.contactFirstName, \" \",cus.contactLastName) as Contact, cus.city, cus.state, cus.country, cus.phone, CONCAT(emp.firstName, \" \", emp.lastName) as SalesRep\nFROM customers as cus\nJOIN offices as offs\nON offs.postalCode = offs.postalCode\nJOIN employees as emp\nON emp.officeCode = offs.officeCode\nGROUP BY cus.customerName\nORDER BY cus.customerName ASC"
+  },
+  {
+    "query_name": "q20",
+    "issues": [
+      {
+        "issue": "rows affected",
+        "col": 1
+      }
+    ],
+    "sql": "UPDATE employees\nSET officeCode = 10\nWHERE employeeNumber IN(1001,1143)"
+  },
+  {
+    "query_name": "q21",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "Augusta Office Count"
+      },
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      },
+      {
+        "issue": "first row",
+        "val": "Augusta Office Count"
+      }
+    ],
+    "sql": "SELECT COUNT(employeeNumber)  as AugustaOfficeCount\nFROM employees as emps\nJOIN offices as offs\nON offs.officeCode = emps.officeCode\nWHERE offs.officeCode LIKE \"10\""
+  },
+  {
+    "query_name": "q23",
+    "issues": [
+      {
+        "issue": "rows affected",
+        "col": 0
+      }
+    ],
+    "sql": "DELETE FROM employees\nWHERE employeeNumber = 1000"
+  },
+  {
+    "query_name": "q25",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "Employee Count"
+      },
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      }
+    ],
+    "sql": "SELECT offs.city as Office, COUNT(employeeNumber) AS EmployeeCount\nFROM offices AS offs\nJOIN employees as emps\nON emps.officeCode = offs.officeCode\nGROUP BY Office\nORDER BY Office ASC"
+  }
+]

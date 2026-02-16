@@ -1,0 +1,19 @@
+
+Table University{
+    UniName string [pk]
+    city string
+}
+Table College {
+    CollegeName string [pk]
+    UniName string
+    Nameofprograms string 
+    phoneNumber string
+}
+
+Table Programs{
+    Nameofprograms string [pk] 
+    CollegeName string
+    Degree string
+}
+ref: College.UniName > University.UniName //many-to=one
+ref: Programs.Nameofprograms > College.Nameofprograms //many-to-one

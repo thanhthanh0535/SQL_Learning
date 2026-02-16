@@ -1,0 +1,67 @@
+
+table patrons {
+    issued_id varchar(50) PK 
+    phone varchar(15) 
+    patrons_name varchar(50)    [not null]
+    address varchar(50)         [not null]
+    date_of_birth date
+    sponsor_patron varchar(50) [ref:< patrons.patrons_name]
+    recent_id_date datetime
+    id_expires datetime
+}
+
+table catalog_items {
+    ISBN varchar(50)                    [not null]
+    SKU varchar(50)                     [not null]
+    patrons_name varchar(50)            [not null,ref: <> patrons.patrons_name]
+    name_of_items varchar(50) PK
+    name_of_category varchar(50)        [not null]
+    description_of_category varchar(50)
+    replacement_cost decimal            [not null]
+    release_date date                   [not null]
+    date_acquired date                  [not null]
+    publisher varchar(50)               [not null]
+    current_status varchar (50)         [not null]
+    page_count int
+    runtime_for_audio varchar (50)
+}
+
+table item_category {
+    name_of_category varchar(50) PK [ref: - catalog_items.name_of_category]
+    description_of_category varchar(50) [not null, ref: - catalog_items.description_of_category]
+    number_of_date_loaned datetime [not null]
+    late_fee decimal [not null]
+}
+
+table creators {
+    name_of_creators varchar(50) PK
+    country varchar(15) [not null]
+    date_of_birth date
+    date_of_death date
+    name_of_items varchar(50) [ref: <> catalog_items.name_of_items]
+}
+
+table events {
+    event_name varchar(50) PK
+    brief varchar(100) [not null]
+    patrons_name varchar(50) [ref: <> patrons.patrons_name]
+    date_initial date
+    event_itself date
+    location varchar(50)
+    minimum_age int
+    maximum_capacity varchar(50)
+    children_cost decimal
+    adult_cost decimal
+    seniors_cost decimal
+}
+
+table fee {
+    patrons_name varchar(50) [not null, ref: > patrons.patrons_name]
+    amount decimal PK [not null]
+    reason varchar(50)
+    name_of_items varchar(50) [not null, ref: <> catalog_items.name_of_items]
+    event_name varchar(50) [ref: <> catalog_items.name_of_items]
+    status varchar(50) [not null]
+    date_paid date
+    date_dismissed date
+}

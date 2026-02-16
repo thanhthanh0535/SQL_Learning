@@ -1,0 +1,14 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display the code, name, buy price, and profit (i.e., MSRP - buyPrice) for
+-- products that have a profit margin below $30. Alias your profit calculation
+-- as "Profit". Sort by profit ascending from lowest to highest.
+-- 
+-- This is the same as the last one, but filtered and sorted differently. And
+-- unfortunately you can't use the profit alias in the WHERE clause. How will
+-- you filter it?? And no, the answer is NOT to use the HAVING clause for you
+-- "too clever" types.
+-- 
+-- (23 rows, first is a 1939 Chevy Coupe)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

@@ -1,0 +1,360 @@
+[
+  {
+    "query_name": "q1",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "phone"
+      },
+      {
+        "issue": "first row",
+        "val": "paymentDate"
+      },
+      {
+        "issue": "first row",
+        "val": "amount"
+      },
+      {
+        "issue": "first row",
+        "val": "checkNumber"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "phone"
+      },
+      {
+        "issue": "last row",
+        "val": "paymentDate"
+      },
+      {
+        "issue": "last row",
+        "val": "amount"
+      },
+      {
+        "issue": "last row",
+        "val": "checkNumber"
+      }
+    ],
+    "sql": "SELECT customerName,phone,paymentDate,amount,checkNumber\nFROM payments AS pay\nJOIN customers AS cus\n    ON cus.customerNumber= pay.customerNumber\nORDER BY amount ASC"
+  },
+  {
+    "query_name": "q3",
+    "issues": [
+      {
+        "issue": "colNames",
+        "val": "Contact Name"
+      },
+      {
+        "issue": "first row",
+        "val": "Contact Name"
+      },
+      {
+        "issue": "last row",
+        "val": "Contact Name"
+      }
+    ],
+    "sql": "SELECT customerName, CONCAT (cus.contactFirstName, \" \", cus.contactLastName) as contactname, phone,creditLimit\nFROM customers AS cus\nJOIN payments as pay\n    ON cus.customerNumber = pay.customerNumber\nWHERE  pay.amount > 0.7*cus.creditLimit\nORDER BY creditLimit DESC"
+  },
+  {
+    "query_name": "q7",
+    "issues": [
+      {
+        "issue": "number of columns",
+        "col": 4
+      }
+    ],
+    "sql": "SELECT odd.orderNumber, orderDate,status, prod.productName\nFROM orders AS od\nJOIN orderdetails AS odd\n    ON od.orderNumber=odd.orderNumber\nJOIN products AS prod\n    ON odd.productCode =prod.productCode\nWHERE od.status LIKE \"Cancelled\" AND prod.MSRP = odd.priceEach\nORDER BY od.orderDate DESC, prod.productName ASC"
+  },
+  {
+    "query_name": "q8",
+    "issues": [
+      {
+        "issue": "number of columns",
+        "col": 3
+      }
+    ],
+    "sql": "SELECT DISTINCT customerName, cus.customerNumber, YEAR(odr.orderDate)\nFROM customers AS cus\nJOIN orders AS odr\n    ON odr.customerNumber= cus.customerNumber\nWHERE odr.orderDate LIKE \"2005%\"\nORDER BY cus.customerName ASC"
+  },
+  {
+    "query_name": "q9",
+    "issues": [
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      }
+    ],
+    "sql": "SELECT customerName,count(od.orderNumber) AS OrderCount\nFROM customers AS cus\nJOIN orders AS od\n    ON cus.customerNumber=od.customerNumber\nGROUP BY customerName\nORDER BY OrderCount DESC, customerName ASC"
+  },
+  {
+    "query_name": "q11",
+    "issues": [
+      {
+        "issue": "number of rows",
+        "col": 1
+      },
+      {
+        "issue": "first row",
+        "val": "ProductCount"
+      }
+    ],
+    "sql": "SELECT productLine, COUNT(*) as ProductCount\nFROM productlines\nORDER BY ProductCount ASC"
+  },
+  {
+    "query_name": "q13",
+    "issues": [
+      {
+        "issue": "number of rows",
+        "col": 454
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRep"
+      },
+      {
+        "issue": "last row",
+        "val": "SalesRep"
+      }
+    ],
+    "sql": "SELECT customerName, CONCAT(contactFirstName, \" \",contactLastName) as Contact, cus.city, cus.state,cus.phone, cus.country, CONCAT(emp.firstName, \" \",emp.lastName) AS SalesRep\nFROM customers AS cus\nJOIN offices AS offi\n    ON offi.country = cus.country\nJOIN employees AS emp\n    On emp.officeCode = offi.officeCode\nORDER BY cus.country ASC, cus.customerName ASC"
+  },
+  {
+    "query_name": "q14",
+    "issues": [
+      {
+        "issue": "number of rows",
+        "col": 94
+      },
+      {
+        "issue": "first row",
+        "val": "Contact"
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRep"
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRepPhone"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "Contact"
+      },
+      {
+        "issue": "last row",
+        "val": "city"
+      },
+      {
+        "issue": "last row",
+        "val": "country"
+      },
+      {
+        "issue": "last row",
+        "val": "phone"
+      }
+    ],
+    "sql": "SELECT DISTINCT cus.customerName,CONCAT(cus.contactFirstName, \" \",cus.contactLastName),cus.city,cus.country,cus.phone, CONCAT(emp.firstName, \" \" ,emp.lastName) AS SalesRep, CONCAT (offi.phone,\" \",emp.extension) AS SalesRepPhone\nFROM customers AS cus\nJOIN offices AS offi\n    ON offi.country = cus.country\nJOIN employees AS emp\n    On emp.officeCode = offi.officeCode\nWHERE cus.country NOT LIKE \"USA\"\nORDER BY cus.customerName ASC"
+  },
+  {
+    "query_name": "q15",
+    "issues": [
+      {
+        "issue": "number of rows",
+        "col": 60
+      },
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "CustomerCountry"
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRep"
+      },
+      {
+        "issue": "first row",
+        "val": "SalesRepCountry"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "CustomerCountry"
+      },
+      {
+        "issue": "last row",
+        "val": "SalesRep"
+      },
+      {
+        "issue": "last row",
+        "val": "SalesRepCountry"
+      }
+    ],
+    "sql": "SELECT DISTINCT cus.customerName, cus.country AS CustomerCountry,CONCAT(cus.contactFirstName, \" \",cus.contactLastName) AS SalesRep, o.country AS SalesRepCountry\nFROM customers AS cus\nJOIN offices AS o\n    ON o.country = cus.country\nORDER BY SalesRep ASC, cus.customerName ASC"
+  },
+  {
+    "query_name": "q19",
+    "issues": [
+      {
+        "issue": "number of columns",
+        "col": 5
+      },
+      {
+        "issue": "first row",
+        "val": "customerName"
+      },
+      {
+        "issue": "first row",
+        "val": "orderNumber"
+      },
+      {
+        "issue": "first row",
+        "val": "orderDate"
+      },
+      {
+        "issue": "first row",
+        "val": "productCode"
+      },
+      {
+        "issue": "first row",
+        "val": "productName"
+      },
+      {
+        "issue": "first row",
+        "val": "quantityOrdered"
+      },
+      {
+        "issue": "first row",
+        "val": "TotalProfit"
+      },
+      {
+        "issue": "last row",
+        "val": "customerName"
+      },
+      {
+        "issue": "last row",
+        "val": "orderNumber"
+      },
+      {
+        "issue": "last row",
+        "val": "orderDate"
+      },
+      {
+        "issue": "last row",
+        "val": "productCode"
+      },
+      {
+        "issue": "last row",
+        "val": "productName"
+      },
+      {
+        "issue": "last row",
+        "val": "quantityOrdered"
+      },
+      {
+        "issue": "last row",
+        "val": "TotalProfit"
+      }
+    ],
+    "sql": "SELECT customerName, orderDate, prod.productCode, productName, ((odd.PriceEach-prod.BuyPrice) * odd.QuantityOrdered) AS \"TotalProfit\"\nFROM customers AS cus\nJOIN orders AS od\n    ON od.customerNumber= cus.customerNumber\nJOIN orderdetails AS odd\n    ON od.orderNumber = odd.orderNumber\nJOIN products AS prod\n    ON prod.productCode = odd.productCode\nORDER BY TotalProfit DESC\nLIMIT 20 OFFSET 1"
+  },
+  {
+    "query_name": "q20",
+    "issues": [
+      {
+        "issue": "number of rows",
+        "col": 34
+      },
+      {
+        "issue": "number of columns",
+        "col": 2
+      }
+    ],
+    "sql": "SELECT DISTINCT prod.productName, ((odd.PriceEach-prod.BuyPrice) * odd.QuantityOrdered) AS \"TotalProfit\"\nFROM products as prod\nJOIN orderdetails AS odd\n    ON prod.productCode = odd.productCode\nHAVING TotalProfit >= 4000\nORDER BY productName ASC"
+  },
+  {
+    "query_name": "q21",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "country"
+      },
+      {
+        "issue": "first row",
+        "val": "CustomerCount"
+      },
+      {
+        "issue": "first row",
+        "val": "AverageCreditLimit"
+      },
+      {
+        "issue": "first row",
+        "val": "MaximumCreditLimit"
+      },
+      {
+        "issue": "first row",
+        "val": "MinimumCreditLimit"
+      }
+    ],
+    "sql": "SELECT customerNumber, Count(*) AS CustomerCount, ROUND(AVG(cus.creditLimit)) AS AverageCreditLimit, MAX(cus.creditLimit) AS MaximumCreditLimit, MIN(cus.creditLimit) AS MinimumCreditLimit\nFROM customers AS cus\nGROUP BY cus.country\nORDER BY cus.country ASC"
+  },
+  {
+    "query_name": "q22",
+    "issues": [
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      },
+      {
+        "issue": "first row",
+        "val": "city"
+      },
+      {
+        "issue": "first row",
+        "val": "EmployeeCount"
+      }
+    ],
+    "sql": "SELECT offi.city,emp.employeeNumber AS \"EmployeeCount\"\nFROM offices AS offi\nJOIN employees AS emp\n    ON emp.officeCode = offi.officeCode\nGROUP BY offi.city\nORDER BY EmployeeCount DESC"
+  },
+  {
+    "query_name": "q23",
+    "issues": [
+      {
+        "issue": "first row",
+        "val": "ContactName"
+      },
+      {
+        "issue": "last row",
+        "val": "ContactName"
+      }
+    ],
+    "sql": "SELECT DISTINCT customerName, CONCAT(cus.contactFirstName, \" \",cus.contactLastName), cus.phone, SUM(pay.amount) AS \"TotalPayments\"\nFROM customers AS cus\nJOIN payments AS pay\n    ON cus.customerNumber = pay.customerNumber\nGROUP BY customerName\nHAVING TotalPayments > 100000\nORDER BY TotalPayments DESC"
+  },
+  {
+    "query_name": "q24",
+    "issues": [
+      {
+        "issue": "uses COUNT(*) to count records",
+        "col": false
+      }
+    ],
+    "sql": "SELECT cus.customerName, COUNT(cus.customerName) AS \"OrdersPlaced\"\nFROM customers AS cus\nJOIN orders AS od\n    ON od.customerNumber= cus.customerNumber\nGROUP BY customerName\nHAVING OrdersPlaced < 3\nORDER BY cus.customerName ASC"
+  }
+]

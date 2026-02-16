@@ -1,0 +1,15 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display a list of all model cars from the 1930's, 1940's or 1950's. Include
+-- the name, product line, vendor, and MSRP. Sort alphabetically by product line
+-- and then by product name.
+-- 
+-- Note that I said "cars". Whether classic or vintage or super or clown. The
+-- product line should be "something cars".
+-- 
+-- Yes, the WHERE clause is getting pretty crowded and you're likely employing
+-- ANDs/ORs and parentheses.
+-- 
+-- (23 rows, 1948 Porsche will be up top)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

@@ -1,0 +1,11 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display the employee name (concatenated in the form "last, first" and aliased
+-- as FullName), title, officeCode, and email address for the employees whose
+-- job titles start with VP. Sort alphabetically by the full name.
+--
+-- Use pattern matching for this.
+-- 
+-- (2 rows)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

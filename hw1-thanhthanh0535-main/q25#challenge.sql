@@ -1,0 +1,15 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Query the offices table and note the office code and city for each of the
+-- offices. Try to redo the non-challenge query such that it displays the city
+-- name instead of just HQ or Branch. Use a CASE / WHEN statement to make this
+-- work. Change the office sort order to be ASC instead of DESC.
+-- 
+-- This will become a LOT easier once we learn how to do joins, but this is a
+-- good opportunity to practice with the CASE / WHEN expression.
+-- 
+-- Julie Firrelli   | Sales Rep | jfirrell @classicmodelcars.com    | Boston
+--                      -- 21 others --
+-- Yoshimi Kato     | Sales Rep | ykato@classicmodelcars.com        | Tokyo
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

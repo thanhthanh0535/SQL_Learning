@@ -1,0 +1,11 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display the employee number, title, last name, first name (no concatenation),
+-- officeCode, and email address for the employees whose job titles have
+-- something to due with sales (i.e., contain the letters "sale"). Sort
+-- alphabetically by the title and then by the last name and then by the first
+-- name.
+-- 
+-- (21 rows...out of 23 employees...definitely a company that's all about sales)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

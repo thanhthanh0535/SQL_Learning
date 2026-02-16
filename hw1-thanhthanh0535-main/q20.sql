@@ -1,0 +1,11 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display the average credit limit (rounded to the nearest dollar) for all
+-- customers in the Australia, New Zealand, Singapore, Japan, Hong Kong and
+-- Philippines. Alias this as PacificCredit.
+-- 
+-- I recommend STRONGLY using an IN clause.
+-- 
+-- (1 value, will be 81888)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

@@ -1,0 +1,43 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-in-docker
+{
+	"name": "AIST 3410 w/ MariaDB + Python",
+
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "aist3410-mariadb",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"containerEnv": { "TZ": "America/New_York" },
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"cweijan.vscode-mysql-client2",
+				"github.github-vscode-theme",
+				"bocovo.dbml-erd-visualizer",
+				"matt-meyers.vscode-dbml"
+			],
+			"settings": {
+				"files.exclude": {
+					"**/.*": true
+				},
+				"database-client.escapedAllObjectName": "never",
+				"database-client.bindConnectionByActiveMark": false,
+				"workbench.colorTheme": "GitHub Dark Default"
+			}
+		}
+	},
+	"features": {
+		"./non-root-user": {
+			"username": "${localEnv:GITHUB_USER}",
+			"userUid": "1999",
+			"userGid": "1999"
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "sudo /bin/bash .devcontainer/post-create.sh",
+
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "${localEnv:GITHUB_USER}"
+}

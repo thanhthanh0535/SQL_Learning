@@ -1,0 +1,13 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- Display a list of all employees. Include first and last name concatenated
+-- with a space in between (alias as FullName), title, email, AND a field (alias as
+-- office) that says whether they are in "HQ" or "Branch". Office code 1 is
+-- "HQ". So in other words, IF the office code is 1, it should display HQ.
+-- Otherwise, it should display "Branch". Sort Z-A by your "office" field and
+-- then A-Z by the full name.
+-- 
+-- (shows all 23 employees. 6 will be in HQ. Anthony Bow will be  first and
+--  Yoshimi Kato last)
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

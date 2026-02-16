@@ -1,0 +1,19 @@
+-------------------------- I N S T R U C T I O N S ----------------------------
+-- OPTIONAL CHALLENGE: Display the name, country, and credit rating of all
+-- customers in the Pacific region with a credit limit greater than the the
+-- average credit limit for that region. Sort alphabetically by customer name.
+-- 
+-- This is similar to the non-challenge version of this query, however you will
+-- use that query as a subquery here. And yes, both the main and sub queries
+-- will require the same IN list of countries in the WHERE clause.
+-- 
+-- This is a pretty large query and definitely challenging. But do give it a
+-- shot. Subqueries are fun and very powerful.
+-- 
+-- (9 rows that will look as follows:)
+--  Anna's Decorations, Ltd  |   Australia   |   107800.00
+--                  --- 7 more rows ---
+--  Tokyo Collectables, Ltd  |   Japan       |   94400.00
+-------------------------------------------------------------------------------
+------------------ W R I T E   Q U E R Y   B E L O W   H E R E ----------------
+

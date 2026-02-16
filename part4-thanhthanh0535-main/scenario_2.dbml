@@ -1,0 +1,15 @@
+Table BasketballTeams {
+    TeamName string [pk] 
+    city string
+    start_date datetime
+    end_date datetime
+}
+
+Table Players {
+    playerName string [pk]
+    TeamName string
+    position string
+    start_date datetime
+    end_date datetime
+}
+ref: Players.TeamName <> BasketballTeams.TeamName //many-to-many
